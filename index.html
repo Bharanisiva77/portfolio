@@ -1,0 +1,819 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bharanidharan S | Full-Stack Developer</title>
+
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   ROOT VARIABLES
+========================= */
+
+:root{
+    --bg:#050816;
+    --card:#0f172a;
+    --text:#ffffff;
+    --muted:#94a3b8;
+    --primary:#3b82f6;
+    --secondary:#8b5cf6;
+    --border:rgba(255,255,255,0.08);
+}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+    scroll-padding-top: 100px;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:
+    radial-gradient(circle at top left,#1e1b4b 0%,transparent 25%),
+    radial-gradient(circle at bottom right,#0f172a 0%,transparent 30%),
+    var(--bg);
+
+    color:var(--text);
+    line-height:1.7;
+    overflow-x:hidden;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+section{
+    padding:110px 0;
+}
+
+h1,h2,h3,h4{
+    font-family:'Space Grotesk',sans-serif;
+}
+
+h2{
+    font-size:48px;
+    margin-bottom:60px;
+    position:relative;
+}
+
+h2::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-12px;
+    width:80px;
+    height:4px;
+    border-radius:20px;
+
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    z-index: 1000;
+    background: rgba(5, 8, 22, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    text-decoration: none;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logo:hover {
+    color: var(--primary);
+    transition: color 0.3s ease;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:450px;
+    height:450px;
+    background:var(--primary);
+    opacity:0.15;
+    filter:blur(120px);
+    top:-100px;
+    right:-100px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:var(--secondary);
+    opacity:0.12;
+    filter:blur(120px);
+    bottom:-120px;
+    left:-120px;
+}
+
+.hero-tag{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:999px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:#60a5fa;
+    letter-spacing:2px;
+    font-size:14px;
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:72px;
+    line-height:1.05;
+    margin-bottom:25px;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #cbd5e1
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-description{
+    max-width:760px;
+    font-size:18px;
+    color:#cbd5e1;
+    line-height:1.9;
+    margin-bottom:40px;
+}
+
+.hero-description span{
+    color:#60a5fa;
+    font-weight:700;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+
+    padding:16px 34px;
+    border-radius:14px;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    font-weight:600;
+    transition:0.4s ease;
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.02);
+    filter: brightness(1.1);
+    box-shadow:0 15px 40px rgba(59,130,246,0.3);
+}
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-bottom:70px;
+}
+
+.about-content p{
+    color:var(--muted);
+    font-size:17px;
+}
+
+.personal-description{
+    margin-top:60px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    padding:40px;
+    border-radius:24px;
+    backdrop-filter:blur(10px);
+}
+
+.personal-description h3{
+    font-size:30px;
+    color:#60a5fa;
+    margin-bottom:25px;
+}
+
+.personal-description p{
+    color:#cbd5e1;
+    margin-bottom:18px;
+    font-size:17px;
+}
+
+/* =========================
+   TECH GRID
+========================= */
+
+.tech-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.tech-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+    padding:35px;
+    border-radius:22px;
+
+    backdrop-filter:blur(10px);
+
+    transition:0.4s ease;
+}
+
+.tech-card:hover{
+    transform:translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+}
+
+.tech-card h3{
+    color:#60a5fa;
+    margin-bottom:20px;
+    font-size:24px;
+}
+
+.tech-card ul{
+    list-style:none;
+}
+
+.tech-card li{
+    margin-bottom:14px;
+    color:#dbeafe;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.project-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+
+    padding:40px;
+    border-radius:24px;
+
+    margin-bottom:30px;
+
+    backdrop-filter:blur(10px);
+
+    transition:0.4s ease;
+}
+
+.project-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(59,130,246,0.12);
+    border-color: var(--secondary);
+}
+
+.project-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.project-header h3{
+    font-size:32px;
+}
+
+.project-header span{
+    color:#60a5fa;
+    font-size:14px;
+}
+
+.project-description{
+    color:var(--muted);
+    margin-bottom:25px;
+}
+
+.project-section{
+    margin-bottom:22px;
+}
+
+.project-section h4{
+    margin-bottom:10px;
+}
+
+.project-section p,
+.project-section li{
+    color:#cbd5e1;
+}
+
+.project-section ul{
+    padding-left:20px;
+}
+
+/* =========================
+   EXPERIENCE
+========================= */
+
+.experience-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+
+    padding:35px;
+    border-radius:22px;
+
+    margin-bottom:25px;
+
+    backdrop-filter:blur(10px);
+    transition: 0.4s ease;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+}
+
+.experience-card h3{
+    font-size:28px;
+}
+
+.experience-card span{
+    display:block;
+    color:#60a5fa;
+    margin:14px 0 20px;
+}
+
+.experience-card ul{
+    padding-left:20px;
+}
+
+.experience-card li{
+    margin-bottom:10px;
+    color:#cbd5e1;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    text-align:center;
+}
+
+.contact p{
+    max-width:700px;
+    margin:auto;
+    margin-bottom:35px;
+    color:var(--muted);
+}
+
+.contact-links{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.contact-links a{
+    text-decoration:none;
+    color:white;
+
+    padding:14px 24px;
+
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:14px;
+
+    transition:0.4s ease;
+}
+
+.contact-links a:hover{
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+    transform:translateY(-4px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:56px;
+    }
+
+    .about-content{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:768px){
+
+    section{
+        padding:90px 0;
+    }
+
+    h2{
+        font-size:36px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .project-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="container">
+        <a href="#" class="logo">Bharanidharan S</a>
+    </div>
+</header>
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+<div class="container">
+
+<p class="hero-tag">
+FULL-STACK DEVELOPER
+</p>
+
+<h1>
+Engineering Reliable <br>
+Web Systems with <br>
+Clean Architecture
+</h1>
+
+<p class="hero-description">
+Hi, I’m <span>Bharanidharan S</span> — a Full-Stack Developer
+passionate about building scalable web applications,
+responsive user interfaces, and efficient backend systems.
+I specialize in React, Next.js, Node.js, MongoDB, and
+modern full-stack development with a strong focus on
+clean architecture, API integration, and performance optimization.
+</p>
+
+<a href="#projects" class="btn">
+View Projects
+</a>
+
+</div>
+
+</section>
+
+<!-- ABOUT SECTION -->
+
+<section class="about">
+
+<div class="container">
+
+<h2>About Me</h2>
+
+<div class="about-content">
+
+<p>
+I’m a Computer Science and Business Systems student at
+Sri Eshwar College of Engineering with practical experience
+in full-stack web development and scalable application design.
+My development approach emphasizes clean code, responsive UI,
+performance optimization, and maintainable architecture.
+</p>
+
+<p>
+Through internships and hands-on projects, I’ve worked on
+developing secure authentication systems, RESTful APIs,
+healthcare applications, and modern frontend experiences
+using technologies like React.js, Next.js, Express.js,
+MongoDB, Flask, and MySQL.
+</p>
+
+</div>
+
+<!-- PERSONAL DESCRIPTION -->
+
+<div class="personal-description">
+
+<h3>Who I Am</h3>
+
+<p>
+I enjoy solving engineering problems, optimizing application
+performance, and building software that delivers real value
+to users. My focus is on writing clean, maintainable code
+while creating scalable systems and intuitive user experiences.
+</p>
+
+<p>
+I’ve completed internships as a Modern Full-Stack Developer
+and MERN Stack Developer where I gained hands-on experience
+with authentication systems, API integration, deployment,
+and full-stack application architecture.
+</p>
+
+<p>
+Alongside development, I actively strengthen my problem-solving
+skills through competitive programming platforms like LeetCode,
+CodeChef, and SkillRack.
+</p>
+
+</div>
+
+<!-- TECH STACK -->
+
+<h2 style="margin-top:80px;">Tech Stack</h2>
+
+<div class="tech-grid">
+
+<div class="tech-card">
+
+<h3>Frontend</h3>
+
+<ul>
+<li>React.js</li>
+<li>Next.js</li>
+<li>JavaScript</li>
+<li>HTML5</li>
+<li>CSS3</li>
+</ul>
+
+</div>
+
+<div class="tech-card">
+
+<h3>Backend</h3>
+
+<ul>
+<li>Node.js</li>
+<li>Express.js</li>
+<li>Flask</li>
+<li>Django</li>
+<li>PHP</li>
+</ul>
+
+</div>
+
+<div class="tech-card">
+
+<h3>Database & Tools</h3>
+
+<ul>
+<li>MongoDB</li>
+<li>MySQL</li>
+<li>Git & GitHub</li>
+<li>VS Code</li>
+<li>REST APIs</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section class="projects" id="projects">
+
+<div class="container">
+
+<h2>Architecture & Projects</h2>
+
+<div class="project-card">
+
+<div class="project-header">
+
+<h3>Health Assist</h3>
+
+<span>Healthcare Platform</span>
+
+</div>
+
+<p class="project-description">
+Developed a healthcare assistance platform providing
+health prediction guidance, online doctor consultation,
+and secure doctor-patient communication with automated
+email notifications.
+</p>
+
+<div class="project-section">
+
+<h4>Tech Stack</h4>
+
+<p>
+HTML, CSS, JavaScript, PHP, MySQL
+</p>
+
+</div>
+
+<div class="project-section">
+
+<h4>Engineering Wins</h4>
+
+<ul>
+<li>Secure doctor-patient communication system</li>
+<li>Automated healthcare email notifications</li>
+<li>Responsive cross-device interface</li>
+<li>Optimized backend request handling</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="project-card">
+
+<div class="project-header">
+
+<h3>Music Player Application</h3>
+
+<span>React Web App</span>
+
+</div>
+
+<p class="project-description">
+Built a music streaming application inspired by Spotify
+with responsive UI design and smooth user interactions.
+</p>
+
+</div>
+
+<div class="project-card">
+
+<div class="project-header">
+
+<h3>Hangman Game</h3>
+
+<span>Desktop Application</span>
+
+</div>
+
+<p class="project-description">
+Developed a desktop-based Hangman game using Flask and
+packaged it using PyInstaller for standalone deployment.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- EXPERIENCE -->
+
+<section class="experience">
+
+<div class="container">
+
+<h2>Experience</h2>
+
+<div class="experience-card">
+
+<h3>Codehub Nexus</h3>
+
+<span>
+Modern Full-Stack Developer Intern • 2025
+</span>
+
+<ul>
+<li>Built scalable applications using Next.js and React</li>
+<li>Implemented secure authentication using NextAuth</li>
+<li>Integrated REST APIs and MongoDB</li>
+<li>Worked on scalable application architecture</li>
+</ul>
+
+</div>
+
+<div class="experience-card">
+
+<h3>The Better Tomorrow</h3>
+
+<span>
+MERN Stack Developer Intern • 2025
+</span>
+
+<ul>
+<li>Developed MERN stack applications with CRUD operations</li>
+<li>Integrated AI-powered features into applications</li>
+<li>Improved frontend responsiveness and backend stability</li>
+<li>Worked with RESTful APIs and authentication systems</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact">
+
+<div class="container">
+
+<h2>Let’s Build Reliable Software</h2>
+
+<p>
+I’m open to opportunities where I can contribute as a
+Full-Stack Developer and help teams build scalable,
+production-ready software solutions.
+</p>
+
+<div class="contact-links">
+
+<a href="#">
+https://github.com/Bharanisiva77
+</a>
+
+<a href="#">
+www.linkedin.com/in/bharanidharans1930
+</a>
+
+<a href="#">
+Technical Blog
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>
+```
